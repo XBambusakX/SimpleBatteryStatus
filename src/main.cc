@@ -22,7 +22,7 @@ SDL_Window* gWindow{nullptr};
 SDL_Renderer* gRenderer{nullptr};
 
 SDL_Color getColorFromPercentage(int percentage) {
-    if (percentage < 1 || percentage > 100) {
+    if (percentage <= 1 || percentage >= 100) {
         // Handle invalid input (e.g., return a default color)
         SDL_Color defaultColor = {0, 0, 0, 0x50}; // Black with your opacity
         return defaultColor;
@@ -103,7 +103,7 @@ int main(int argc, char* args[]){
                 gIsCharging = true;
             }
 
-          if(gIsCharging && gBatteryPercentage < 90){
+          if(gIsCharging && gBatteryPercentage > 90){
             gHeight = 1;
             gWidth = 1;
           }else{
