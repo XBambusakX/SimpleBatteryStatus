@@ -65,6 +65,7 @@ bool init(){
     SDL_Log("Renderer could not be created! Error: %s\n", SDL_GetError());
     return false;
   }
+  SDL_SetRenderDrawBlendMode(gRenderer, SDL_BLENDMODE_ADD);
   return true;
 }
 
@@ -104,6 +105,9 @@ int main(int argc, char* args[]){
             }
 
           if(gIsCharging && gBatteryPercentage > 90){
+            gHeight = 1;
+            gWidth = 1;
+          }else if(gBatteryPercentage > 90){
             gHeight = 1;
             gWidth = 1;
           }else{
